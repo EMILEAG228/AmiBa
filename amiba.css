@@ -1,0 +1,92 @@
+/* Animation pour le titre */
+@keyframes border-animation {
+    0% { border-color: red; }
+    25% { border-color: blue; }
+    50% { border-color: green; }
+    75% { border-color: yellow; }
+    100% { border-color: red; }
+}
+
+.animated-title {
+    text-align: center;
+    border: 5px solid;
+    padding: 5px;
+    animation: border-animation 4s infinite;
+}
+
+/* Animation pour l'arrière-plan du body */
+@keyframes background-animation {
+    0% { background-color: #ff9a9e; }
+    25% { background-color: #fad0c4; }
+    50% { background-color: #fad0c4; }
+    75% { background-color: #fbc2eb; }
+    100% { background-color: #ff9a9e; }
+}
+
+body {
+    animation: background-animation 3s infinite;
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif,Red , yellow ;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Style pour les cartes */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 5px solid;
+    margin: 10px;
+    width: 6cm;
+    height: 6cm;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+    animation: border-card-animation 4s infinite;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: lightblue;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 40px); /* 2 cards per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* 1 card per row on mobile phones */
+    }
+}
+/* Style pour les footers */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+.image{
+    border: 5px solid;
+    margin: 10px;
+    width: 6cm;
+    height: 6cm;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
