@@ -45,7 +45,7 @@ body {
     height: 80px;
     background-color:rgb(255, 156, 156);
     border-radius: 10%; /* La valeur de 50% crée un cercle */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
     align-items: center;
