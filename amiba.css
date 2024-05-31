@@ -40,10 +40,10 @@ body {
 }
 
 .card {
-    border-radius:50%
+    border-radius:50%;
     border: 2px solid;
-    width: 3cm;
-    height: 3cm;
+    width: 4cm;
+    height: 4cm;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
@@ -53,7 +53,7 @@ body {
     animation: border-card-animation 4s infinite;
 }
 
-.card:hover {
+.image:hover {
     transform: scale(1.05);
     background-color: lightblue;
 }
