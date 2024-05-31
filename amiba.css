@@ -83,8 +83,8 @@ footer {
     border-radius:50%;
     border: 5px solid;
     margin: 10px;
-    width: 3cm;
-    height: 3cm;
+    width: 100px;
+    height: 100px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
