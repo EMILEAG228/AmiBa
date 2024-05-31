@@ -40,9 +40,8 @@ body {
 }
 
 .card {
-    background-color: white;
+    background-color:rgb(255, 156, 156);
     border-radius:30%;
-    border: 5px solid;
     margin: 10px;
     width: 3cm;
     height: 3cm;
