@@ -41,6 +41,7 @@ body {
 
 .card {
     background-color: white;
+    border-radius:30%;
     border: 5px solid;
     margin: 10px;
     width: 3cm;
@@ -80,7 +81,7 @@ footer {
     margin-top: 20px;
 }
 .image{
-    border-radius:50%;
+    border-radius:30%;
     border: 5px solid;
     margin: 10px;
     width: 3cm;
