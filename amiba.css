@@ -41,6 +41,7 @@ body {
 
 .card {
     background-color:rgb(255, 156, 156);
+     margin: 3px;
     width: 100px;
     height: 100px;
     background-color:rgb(255, 156, 156);
