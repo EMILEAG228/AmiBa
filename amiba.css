@@ -40,18 +40,14 @@ body {
 }
 
 .card {
-    background-color: rgb(255, 156, 156);
-    border: 5px solid;
+    border: 0px solid;
     margin: 10px;
     width: 6cm;
     height: 6cm;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s, background-color 0.3s;
-    animation: border-card-animation 4s infinite;
 }
 
 .card:hover {
@@ -81,7 +77,7 @@ footer {
 }
 .image{
  background-color: rgb(255, 156, 156);
-    border: 5px solid;
+    border: 2px solid;
     margin: 10px;
     width: 3cm;
     height: 3cm;
