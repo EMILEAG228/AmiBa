@@ -40,7 +40,7 @@ body {
 }
 
 .card {
-    margin: 10px;
+    margin: 8px;
     width: 4cm;
     height: 4cm;
     text-align: center;
@@ -75,7 +75,7 @@ footer {
     margin-top: 20px;
 }
 .image{
-    border-radius:50%;
+    border-radius:70%;
     border: 2px solid;
     margin: 10px;
     width: 4cm;
