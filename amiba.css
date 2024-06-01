@@ -41,8 +41,8 @@ body {
 
 .card {
     margin: 10px;
-    width: 6cm;
-    height: 6cm;
+    width: 4cm;
+    height: 4cm;
     text-align: center;
     display: flex;
     align-items: center;
@@ -78,8 +78,8 @@ footer {
     border-radius:50%;
     border: 2px solid;
     margin: 10px;
-    width: 3cm;
-    height: 3cm;
+    width: 4cm;
+    height: 4cm;
     text-align: center;
     display: flex;
     align-items: center;
