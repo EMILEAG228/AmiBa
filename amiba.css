@@ -84,11 +84,9 @@ footer {
     padding:5px;
  width: 100px;
     height: 100px;
-    background-color: rgb(255, 156, 156);
-    border-radius: 50%; /* La valeur de 50% crée un cercle */
-        background-color:rgb(255, 156, 156);
-    border-radius: 50%; /* La valeur de 50% crée un cercle */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  /*  background-color: rgb(255, 156, 156); */
+    border-radius: 10px; /* La valeur de 50% crée un cercle */
+   /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
     text-align: center;
     display: flex;
     align-items: center;
