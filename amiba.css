@@ -67,7 +67,7 @@ body {
     }
 }
 /* Style pour les footers */
-footer {
+.footer {
     text-align: center;
     padding: 10px;
     background-color: #ff9a9e;
