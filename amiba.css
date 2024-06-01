@@ -70,7 +70,7 @@ body {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #ff9a9e;
     color: white;
     margin-top: 20px;
 }
@@ -84,4 +84,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.foot{
+    text-align: center;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
 }
