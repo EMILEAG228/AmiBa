@@ -43,8 +43,8 @@ body {
     background-color: rgb(255, 156, 156);
     border: 5px solid;
     margin: 10px;
-    width: 3cm;
-    height: 3cm;
+    width: 6cm;
+    height: 6cm;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
