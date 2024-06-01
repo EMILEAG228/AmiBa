@@ -25,7 +25,7 @@
 
 body {
     animation: background-animation 3s infinite;
-    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif,Red , yellow ;
+    font-family:Red, Georgia, 'Times New Roman', Times, serif, sans-serif,Red , yellow ,Red,Times,Red;
     margin: 0;
     padding: 0;
     
