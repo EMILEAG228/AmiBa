@@ -80,6 +80,7 @@ footer {
     margin-top: 20px;
 }
 .image{
+ background-color: rgb(255, 156, 156);
     border: 5px solid;
     margin: 10px;
     width: 3cm;
@@ -89,4 +90,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+    animation: border-card-animation 4s infinite;
 }
