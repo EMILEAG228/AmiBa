@@ -82,9 +82,9 @@ footer {
 .image{
     border-radius:90%;
     border: 2px solid;
-    margin: 50px;
-    width: 120px;
-    height: 120px;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
