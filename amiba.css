@@ -41,8 +41,8 @@ body {
 
 .card {
     margin: 10px;
-    width: 6cm;
-    height: 6cm;
+    width: 3cm;
+    height: 3cm;
     text-align: center;
     display: flex;
     align-items: center;
@@ -77,11 +77,12 @@ footer {
     margin-top: 20px;
 }
 .image{
-    padding:30px;
-    border-radius:50%;
-    margin: 30px;
-    width: 3cm;
-    height: 3cm;
+    border-radius:50%
+    border: 2px solid;
+    margin: 10px;
+    width: 6cm;
+    height: 6cm;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
     align-items: center;
