@@ -41,7 +41,7 @@ body {
 
 .card {
     background-color:rgb(255, 156, 156);
-     margin: 5px;
+     margin: 10px;
     width: 100px;
     height: 100px;
     background-color:rgb(255, 156, 156);
@@ -80,9 +80,9 @@ footer {
     margin-top: 20px;
 }
 .image{
-    border-radius:20%;
+    border-radius:70%;
     border: 2px solid;
-    margin: 20px;
+    margin: 50px;
     width: 100px;
     height: 100px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
