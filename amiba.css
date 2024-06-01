@@ -40,12 +40,12 @@ body {
 }
 
 .card {
-    background-color:rgb(255, 156, 156);
+    /*background-color:rgb(255, 156, 156);*/
      margin: 5px;
     width: 10px;
     height: 10px;
     background-color:rgb(255, 156, 156);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);*/
     text-align: center;
     display: flex;
     align-items: center;
