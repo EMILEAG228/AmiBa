@@ -3,6 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const correctPassword = "1234"; // Mot de passe correct
+            let isAuthenticated = false;
+
+            while (!isAuthenticated) {
+                const userPassword = prompt("Veuillez entrer le mot de passe pour acceder a cette Page:");
+                if (userPassword === null) {
+                    alert("Mot de passe requis pour accéder à cette page.");
+                } else if (userPassword === correctPassword) {
+                    isAuthenticated = true;
+                } else {
+                    alert("Mot de passe incorrect. Veuillez réessayer.  Contacter emileagbabli7@gmail.com pour recevoir un code d'acces MERCI");
+                }
+            }
+
+            if (isAuthenticated) {
+                document.body.classList.remove("locked");
+            }
+        });
+    </script>
+
+    
     <title>EMILE AG</title>
 </head>
 <body>
