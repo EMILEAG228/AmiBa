@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" type="image/png" href="https://amibagroue.wordpress.com/wp-content/uploads/2024/12/image.jpg">
+
+
+
+
+  <meta charset="UTF-8">
+  <title>GPS vers Google Maps</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f3;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .formulaire {
+      max-width: 350px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #lien {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: underline;
+    }
+
+    /* Logo rond animé à droite */
+    #logo {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background-color: #FF6347;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: changeColor 2s infinite;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+
+    #logo img {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+
+
+    }
+
+    @keyframes changeColor {
+      0%   { background-color: #FF6347; }
+      25%  { background-color: #4682B4; }
+      50%  { background-color: #32CD32; }
+      75%  { background-color: #FFD700; }
+      100% { background-color: #FF6347; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- FORMULAIRE -->
+    <div class="formulaire">
+      <h2>📍 Générateur Google Maps</h2>
+      <label for="lat">Latitude :</label><br>
+      <input type="text" id="lat" placeholder="Ex : 6.5244"><br>
+
+      <label for="lon">Longitude :</label><br>
+      <input type="text" id="lon" placeholder="Ex : 3.3792"><br>
+
+      <button onclick="genererLien()">Générer le lien</button>
+      <button onclick="detecterPosition()">📡 Utiliser ma position actuelle</button>
+
+      <div id="lien"></div>
+    </div>
+
+    <!-- LOGO agrandi à droite -->
+    <div id="logo">
+      <img src="https://services.ceet.tg/assets/img/ceet_logo1.png" alt="Logo">
+    </div>
+  </div>
+
+  <script>
+    function genererLien() {
+      const lat = document.getElementById("lat").value.trim();
+      const lon = document.getElementById("lon").value.trim();
+      const lienDiv = document.getElementById("lien");
+
+      if (!lat || !lon) {
+        lienDiv.innerHTML = "<span style='color:red;'>Veuillez remplir latitude et longitude.</span>";
+        return;
+      }
+
+      const url = `https://www.google.com/maps?q=${lat},${lon}`;
+      lienDiv.innerHTML = `<p>🌍 <a href="${url}" target="_blank">${url}</a></p>`;
+    }
+
+    function detecterPosition() {
+      const lienDiv = document.getElementById("lien");
+
+      if (!navigator.geolocation) {
+        lienDiv.innerHTML = "<span style='color:red;'>Géolocalisation non supportée par ce navigateur.</span>";
+        return;
+      }
+
+      lienDiv.innerHTML = "⏳ Détection de votre position...";
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+
+          document.getElementById("lat").value = lat;
+          document.getElementById("lon").value = lon;
+
+          const url = `https://www.google.com/maps?q=${lat},${lon}`;
+          lienDiv.innerHTML = `<p>📍 Votre position détectée : <a href="${url}" target="_blank">${url}</a></p>`;
+        },
+        (error) => {
+          lienDiv.innerHTML = "<span style='color:red;'>Erreur lors de la détection de la position.</span>";
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>
