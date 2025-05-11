@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://services.ceet.tg/assets/img/ceet_logo1.png" type="image/png">
+  <title>GPS ↔ UTM - Togo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f7fc;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 15px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px 0;
+      width: 90%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    p {
+      font-size: 15px;
+      margin: 8px 0;
+    }
+
+    a {
+      color: #0077cc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      margin: 30px 0;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #logo-footer {
+      width: 6cm;
+      height: 6cm;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+      animation: colorChange 6s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #logo-footer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes colorChange {
+      0%   { background-color: #ff5f5f; }
+      25%  { background-color: #ffd700; }
+      50%  { background-color: #5fff9e; }
+      75%  { background-color: #5fbaff; }
+      100% { background-color: #ff5f5f; }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        width: 95%;
+      }
+      #logo-footer {
+        width: 4cm;
+        height: 4cm;
+      }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📍 Convertisseur GPS ↔️ UTM (Togo - Zone 31N)</h1>
+
+    <button onclick="getLocation()">🌍 Obtenir ma position actuelle</button>
+    <a href="index.html"><button>Retour</button></a>
+    <div id="result"></div>
+
+    <hr>
+
+    <h2>🧭 Convertir coordonnées UTM (zone 31N)</h2>
+    <input type="number" id="easting" placeholder="Easting (ex: 293281)">
+    <input type="number" id="northing" placeholder="Northing (ex: 686252)">
+    <button onclick="convertUTM()">📌 Convertir vers GPS</button>
+    <div id="utmResult"></div>
+  </div>
+
+  <footer>
+    <div id="logo-footer">
+      <img src="https://services.ceet.tg/assets/img/ceet_logo1.png">
+    </div>
+    <p style="margin-top: 10px; color: #555;">&copy; 2025 AmiBa Groupe - Tous droits réservés</p>
+  </footer>
+
+  <script>
+    const utm31n = "+proj=utm +zone=31 +datum=WGS84 +units=m +no_defs";
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError, {
+          enableHighAccuracy: true
+        });
+      } else {
+        document.getElementById("result").innerHTML = "La géolocalisation n'est pas supportée par ce navigateur.";
+      }
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      const [easting, northing] = proj4('WGS84', utm31n, [lon, lat]);
+      const directionLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+
+      document.getElementById("result").innerHTML = `
+        <p><strong>Latitude :</strong> ${lat.toFixed(6)}</p>
+        <p><strong>Longitude :</strong> ${lon.toFixed(6)}</p>
+        <p><strong>Zone UTM :</strong> 31N</p>
+        <p><strong>Easting :</strong> ${easting.toFixed(0)} m</p>
+        <p><strong>Northing :</strong> ${northing.toFixed(0)} m</p>
+        <p><a href="${directionLink}" target="_blank">🧭 Itinéraire vers ma position (Google Maps)</a></p>
+      `;
+    }
+
+    function convertUTM() {
+      const easting = parseFloat(document.getElementById("easting").value);
+      const northing = parseFloat(document.getElementById("northing").value);
+
+      if (isNaN(easting) || isNaN(northing)) {
+        document.getElementById("utmResult").innerHTML = `<p style="color:red;">Veuillez remplir les champs correctement.</p>`;
+        return;
+      }
+
+      const [lon, lat] = proj4(utm31n, 'WGS84', [easting, northing]);
+      const directionLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+
+      document.getElementById("utmResult").innerHTML = `
+        <p><strong>Latitude :</strong> ${lat.toFixed(6)}</p>
+        <p><strong>Longitude :</strong> ${lon.toFixed(6)}</p>
+        <p><a href="${directionLink}" target="_blank">🧭 Lancer l'itinéraire vers cette position (Google Maps)</a></p>
+      `;
+    }
+
+    function showError(error) {
+      let message = "";
+      switch (error.code) {
+        case error.PERMISSION_DENIED: message = "Permission refusée."; break;
+        case error.POSITION_UNAVAILABLE: message = "Position non disponible."; break;
+        case error.TIMEOUT: message = "Temps de localisation dépassé."; break;
+        default: message = "Erreur inconnue.";
+      }
+      document.getElementById("result").innerHTML = `<p style="color:red;">${message}</p>`;
+    }
+  </script>
+
+</body>
+</html>
