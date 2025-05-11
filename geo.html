@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="icon" type="image/png" href="https://amibagroue.wordpress.com/wp-content/uploads/2024/12/image.jpg">
-
-
-
-
   <meta charset="UTF-8">
-  <title>GPS vers Google Maps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Générateur Google Maps</title>
+  <!-- Icône de la page -->
+  <link rel="icon" href="https://services.ceet.tg/assets/img/ceet_logo1.png" type="image/png">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #eef2f3;
-      padding: 30px;
+      background-color: #f7f7f7;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
     .container {
       display: flex;
-      align-items: center;
-      gap: 60px;
+      flex-wrap: wrap;
       background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
     }
 
-    .formulaire {
-      max-width: 350px;
-      width: 100%;
+    .form {
+      flex: 1 1 300px;
+      min-width: 280px;
     }
 
     h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
       color: #333;
+      text-align: center;
     }
 
-    input, button {
-      padding: 10px;
-      margin: 8px 0;
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input {
       width: 100%;
-      max-width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     button {
-      background-color: #007BFF;
+      margin-top: 10px;
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      background-color: #007bff;
       color: white;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
 
@@ -54,113 +79,114 @@
       background-color: #0056b3;
     }
 
-    #lien {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-
-    a {
-      color: #0066cc;
-      text-decoration: underline;
-    }
-
-    /* Logo rond animé à droite */
-    #logo {
-      width: 240px;
-      height: 240px;
+    .logo-container {
+      width: 6cm;
+      height: 6cm;
       border-radius: 50%;
-      background-color: #FF6347;
+      overflow: hidden;
+      animation: colorChange 5s infinite;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: changeColor 2s infinite;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       flex-shrink: 0;
     }
 
-    #logo img {
-  width: 320px;
-  height: 320px;
-  object-fit: contain;
-
-
+    .logo-container img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
     }
 
-    @keyframes changeColor {
-      0%   { background-color: #FF6347; }
-      25%  { background-color: #4682B4; }
-      50%  { background-color: #32CD32; }
-      75%  { background-color: #FFD700; }
-      100% { background-color: #FF6347; }
+    @keyframes colorChange {
+      0%   { background-color: #ffeb3b; }
+      25%  { background-color: #f44336; }
+      50%  { background-color: #2196f3; }
+      75%  { background-color: #4caf50; }
+      100% { background-color: #ffeb3b; }
+    }
+
+    #link {
+      display: block;
+      margin-top: 10px;
+      word-break: break-all;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      text-align: center;
+      width: 100%;
+      background: linear-gradient(90deg, #007bff, #6610f2, #e83e8c);
+      color: white;
+      animation: gradientMove 5s infinite linear;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    @media (max-width: 600px) {
+      .logo-container {
+        width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <!-- FORMULAIRE -->
-    <div class="formulaire">
+    <div class="form">
       <h2>📍 Générateur Google Maps</h2>
-      <label for="lat">Latitude :</label><br>
-      <input type="text" id="lat" placeholder="Ex : 6.5244"><br>
+      <label for="lat">Latitude :</label>
+      <input type="text" id="lat" placeholder="Exemple : 6.5244">
 
-      <label for="lon">Longitude :</label><br>
-      <input type="text" id="lon" placeholder="Ex : 3.3792"><br>
+      <label for="lon">Longitude :</label>
+      <input type="text" id="lon" placeholder="Exemple : 3.3792">
 
-      <button onclick="genererLien()">Générer le lien</button>
-      <button onclick="detecterPosition()">📡 Utiliser ma position actuelle</button>
+      <button onclick="generateLink()">Générer le lien</button>
+      <button onclick="useCurrentLocation()">📍 Utiliser ma position actuelle</button>
+      <a href="utmgps.html"><button>Garmin GPS</button></a>
 
-      <div id="lien"></div>
+      <a id="link" href="#" target="_blank"></a>
     </div>
 
-    <!-- LOGO agrandi à droite -->
-    <div id="logo">
+    <div class="logo-container">
       <img src="https://services.ceet.tg/assets/img/ceet_logo1.png" alt="Logo">
     </div>
   </div>
 
+  <footer>
+    &copy; 2025 AmiBa Groupe - Tous droits réservés.
+  </footer>
+
   <script>
-    function genererLien() {
-      const lat = document.getElementById("lat").value.trim();
-      const lon = document.getElementById("lon").value.trim();
-      const lienDiv = document.getElementById("lien");
-
-      if (!lat || !lon) {
-        lienDiv.innerHTML = "<span style='color:red;'>Veuillez remplir latitude et longitude.</span>";
-        return;
+    function generateLink() {
+      const lat = document.getElementById('lat').value;
+      const lon = document.getElementById('lon').value;
+      if (lat && lon) {
+        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+        document.getElementById('link').href = url;
+        document.getElementById('link').textContent = "🗺️ Démarrer la navigation vers cette position";
+      } else {
+        alert("Veuillez entrer une latitude et une longitude.");
       }
-
-      const url = `https://www.google.com/maps?q=${lat},${lon}`;
-      lienDiv.innerHTML = `<p>🌍 <a href="${url}" target="_blank">${url}</a></p>`;
     }
 
-    function detecterPosition() {
-      const lienDiv = document.getElementById("lien");
-
-      if (!navigator.geolocation) {
-        lienDiv.innerHTML = "<span style='color:red;'>Géolocalisation non supportée par ce navigateur.</span>";
-        return;
+    function useCurrentLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          document.getElementById('lat').value = position.coords.latitude;
+          document.getElementById('lon').value = position.coords.longitude;
+          generateLink();
+        }, () => {
+          alert("Position non disponible.");
+        });
+      } else {
+        alert("La géolocalisation n'est pas supportée.");
       }
-
-      lienDiv.innerHTML = "⏳ Détection de votre position...";
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude.toFixed(6);
-          const lon = position.coords.longitude.toFixed(6);
-
-          document.getElementById("lat").value = lat;
-          document.getElementById("lon").value = lon;
-
-          const url = `https://www.google.com/maps?q=${lat},${lon}`;
-          lienDiv.innerHTML = `<p>📍 Votre position détectée : <a href="${url}" target="_blank">${url}</a></p>`;
-        },
-        (error) => {
-          lienDiv.innerHTML = "<span style='color:red;'>Erreur lors de la détection de la position.</span>";
-        }
-      );
     }
   </script>
-
 </body>
 </html>
