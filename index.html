@@ -1,74 +1,144 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmiBa</title>
-     <link rel="icon" type="image/jpg" href="images.jpg">
-    <link rel="stylesheet" href="amiba.css">
- <!-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const correctPassword = "1234"; // Mot de passe correct
-            let isAuthenticated = false;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmiBa Groupe</title>
+  <link rel="icon" href="images.jpg" type="image/jpg">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-            while (!isAuthenticated) {
-                const userPassword = prompt("Veuillez entrer le mot de passe pour acceder a l' application :");
-                if (userPassword === null) {
-                    alert("Mot de passe requis pour accéder à cette page.");
-                } else if (userPassword === correctPassword) {
-                    isAuthenticated = true;
-                } else {
-                    alert("Mot de passe incorrect. Veuillez réessayer.  Contacter emileagbabli7@gmail.com pour recevoir un code d'acces MERCI");
-                }
-            }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #0f0f0f, #1f1f1f, #2f2f2f, #1a1a1a);
+      background-size: 400% 400%;
+      animation: backgroundChange 15s ease infinite;
+      color: #fff;
+    }
 
-            if (isAuthenticated) {
-                document.body.classList.remove("locked");
-            }
-        });
-    </script> -->
+    @keyframes backgroundChange {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
+    h2.animated-title {
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 30px 10px;
+      color: #00f0ff;
+      animation: fadeIn 2s ease-in-out;
+    }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #121212;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 90px;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 0.3s;
+    }
+
+    .card img:hover {
+      transform: scale(1.05);
+    }
+
+    footer.foot {
+      text-align: center;
+      margin: 30px auto 10px;
+    }
+
+    footer.foot a h2 {
+      font-size: 1.2rem;
+      color: #00f0ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00f0ff; }
+      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00f0ff; }
+    }
+
+    .footer {
+      background: #111;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media (max-width: 480px) {
+      .card img {
+        height: 70px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2 class="animated-title">Bienvenu Sur AmiBa</h2>
-    <div class="container">
-        <div class="card"><a href="geo.html"><img class="image" src="12.jpg" ></a></div>
-        <div class="card"><a href="https://www.tiktok.com/"><img class="image" src="tiktok.png" ></a></div>
-         <div class="card"><a href="https://www.capcut.com/fr-fr/"><img class="image" src="capcut.png" ></a></div>
-        <div class="card"><a href="https://www.youtube.com/"><img class="image" src="youtube1.jpg" ></div>   
-        <div class="card"><a href="https://www.instagram.com/"><img class="image" src="instagram.jpg" ></div>
-
-        <div class="card"><a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><img class="image" src="facebook.png" ></div>
-        <div class="card"><a href="https://www.google.com/search?q=Chrome&oq=Chrome+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIMCAEQABhDGIAEGIoFMgYIAhBFGEEyDAgDEAAYQxiABBiKBTIMCAQQABhDGIAEGIoFMgwIBRAAGEMYgAQYigUyDAgGEAAYQxiABBiKBTIMCAcQABhDGIAEGIoFMgwICBAAGEMYgAQYigUyDAgJEAAYQxiABBiKBTINCAoQABiDARixAxiABDIHCAsQABiABDIHCAwQLhiABDIHCA0QABiABDIGCA4QRRhB0gEINDA5MmowajmoAg6wAgE&client=ms-android-huawei&sourceid=chrome-mobile&ie=UTF-8"><img class="image" src="sport1.jpg" ></div>
-        <div class="card"><a href="https://www.google.com/maps/@6.2226432,1.1730944,12z?entry=ttu"><img class="image" src="map.jpg" ></div>
-        <div class="card"><a href="https://mail.google.com/"><img class="image" src="gmail.png" ></div>
-        <div class="card"><a href="https://www.snapchat.com/"><img class="image" src="Snapchat.png" ></div>
-        <div class="card"><a href="https://www.linkedin.com/"><img class="image" src="linkedin.jpg" ></div>
-        <div class="card"><a href="https://www.pinterest.com/"><img class="image" src="pinterest.png" ></div>
-        <div class="card"><a href="https://x.com/"><img class="image" src="twitter.png" ></div>
-        
-        <div class="card"><a href="https://www.webtoons.com/fr/originals"><img class="image" src="manga.jpg" ></div>
-        <!-- <div class="card"><a href="emileag.html"><img class="image" src="images.jpg" ></div> -->
-        
-        <div class="card"><a href="https://1xlite-643419.top/fr"><img class="image" src="1xbet.png" ></div>
-        <div class="card"><a href="https://www.reddit.com/"><img class="image" src="reddit.png" ></div>
-        <div class="card"><a href="https://www.amazon.fr/"><img class="image" src="amazone.jpg" ></div>
-        <div class="card"><a href="https://www.alibaba.com/"><img class="image" src="alibaba.png" ></div>
-        <div class="card"><a href="https://www.w3schools.com/"><img class="image" src="w3.jpg" ></div>
-        
-        <div class="card"><a href="https://codepen.io/"><img class="image" src="codepen.png" ></div>
-        <div class="card"><a href="https://jsbin.com/? "><img class="image" src="jsbin.png" ></div>
-        <div class="card"><a href="https://gemini.google.com/app?hl=fr"><img class="image" src="gemi.jpg" ></div>
-        <div class="card"><a href="https://chatgpt.com/"><img class="image" src="chat.jpg" ></div>
-    </div>
-    <br><br>
-</div>
-<footer class="foot">
-    <marque><a href=" https://hey.link/Sh1yE" paceholder="Contact Service"><h2>Contact Servive...</h2></a></marque>
-</footer>
-<footer class="footer">
-    <p>© 2025 EMILE_AG .Tous droits réservés.</p>
-</footer>
+  <h2 class="animated-title">Bienvenue sur AmiBa Groupe</h2>
+  <div class="container">
+    <div class="card"><a href="geo.html"><img src="12.jpg" alt="Geo"></a></div>
+    <div class="card"><a href="https://www.tiktok.com/"><img src="tiktok.png" alt="Tiktok"></a></div>
+    <div class="card"><a href="https://www.capcut.com/fr-fr/"><img src="capcut.png" alt="Capcut"></a></div>
+    <div class="card"><a href="https://www.youtube.com/"><img src="youtube1.jpg" alt="YouTube"></a></div>
+    <div class="card"><a href="https://www.instagram.com/"><img src="instagram.jpg" alt="Instagram"></a></div>
+    <div class="card"><a href="https://www.facebook.com/"><img src="facebook.png" alt="Facebook"></a></div>
+    <div class="card"><a href="https://www.google.com/"><img src="sport1.jpg" alt="Google"></a></div>
+    <div class="card"><a href="https://www.google.com/maps/@6.2226432,1.1730944,12z"><img src="map.jpg" alt="Maps"></a></div>
+    <div class="card"><a href="https://mail.google.com/"><img src="gmail.png" alt="Gmail"></a></div>
+    <div class="card"><a href="https://www.snapchat.com/"><img src="Snapchat.png" alt="Snapchat"></a></div>
+    <div class="card"><a href="https://www.linkedin.com/"><img src="linkedin.jpg" alt="LinkedIn"></a></div>
+    <div class="card"><a href="https://www.pinterest.com/"><img src="pinterest.png" alt="Pinterest"></a></div>
+    <div class="card"><a href="https://x.com/"><img src="twitter.png" alt="Twitter"></a></div>
+    <div class="card"><a href="https://www.webtoons.com/fr/originals"><img src="manga.jpg" alt="Webtoon"></a></div>
+    <div class="card"><a href="https://1xlite-643419.top/fr"><img src="1xbet.png" alt="1xbet"></a></div>
+    <div class="card"><a href="https://www.reddit.com/"><img src="reddit.png" alt="Reddit"></a></div>
+    <div class="card"><a href="https://www.amazon.fr/"><img src="amazone.jpg" alt="Amazon"></a></div>
+    <div class="card"><a href="https://www.alibaba.com/"><img src="alibaba.png" alt="Alibaba"></a></div>
+    <div class="card"><a href="https://www.w3schools.com/"><img src="w3.jpg" alt="W3Schools"></a></div>
+    <div class="card"><a href="https://codepen.io/"><img src="codepen.png" alt="Codepen"></a></div>
+    <div class="card"><a href="https://jsbin.com/"><img src="jsbin.png" alt="JSBin"></a></div>
+    <div class="card"><a href="https://gemini.google.com/app?hl=fr"><img src="gemi.jpg" alt="Gemini"></a></div>
+    <div class="card"><a href="https://chatgpt.com/"><img src="chat.jpg" alt="ChatGPT"></a></div>
+  </div>
+  <br><br>
+  <footer class="foot">
+    <a href="https://hey.link/Sh1yE"><h2>Contact Service...</h2></a>
+  </footer>
+  <footer class="footer">
+    <p>© 2025 EMILE_AG . Tous droits réservés.</p>
+  </footer>
 </body>
 </html>
