@@ -1,143 +1,344 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AmiBa Groupe</title>
-  <link rel="icon" href="images.jpg" type="image/jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bienvenue - AmiBa Chat</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --primary: #1877f2;
+      --secondary: #50e3c2;
+      --text-light: #ffffff;
+      --glass: rgba(255, 255, 255, 0.07);
+      --scroll-color: #ff4444;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-sizing: border-box;
     }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(-45deg, #0f0f0f, #1f1f1f, #2f2f2f, #1a1a1a);
-      background-size: 400% 400%;
-      animation: backgroundChange 15s ease infinite;
-      color: #fff;
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      overflow: hidden;
+      position: relative;
     }
 
-    @keyframes backgroundChange {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 10%, transparent 70%);
+      z-index: 0;
+      animation: pulseBg 12s infinite alternate;
     }
 
-    h2.animated-title {
-      text-align: center;
-      font-size: 2.5rem;
-      padding: 30px 10px;
-      color: #00f0ff;
-      animation: fadeIn 2s ease-in-out;
+    @keyframes pulseBg {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubbles span {
+      position: absolute;
+      display: block;
+      bottom: -150px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: rise 20s linear infinite;
+    }
+
+    .bubbles span:nth-child(odd) {
+      width: 30px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-120vh) scale(0.5); }
     }
 
     .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background: #121212;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+      max-width: 450px;
+      margin: 12vh auto;
+      padding: 50px 30px 40px;
+      background: var(--glass);
+      border-radius: 28px;
+      backdrop-filter: blur(18px);
       text-align: center;
+      border: 2px solid rgba(255,255,255,0.15);
+      animation: fadeIn 1.2s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .card img {
+    .logo {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+      animation: popIn 0.8s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .logo img {
       width: 100%;
-      height: 90px;
+      height: 100%;
       object-fit: contain;
-      padding: 10px;
-      transition: transform 0.3s;
+      animation: spinBounce 4s ease-in-out infinite;
     }
 
-    .card img:hover {
+    @keyframes spinBounce {
+      0% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(5deg) translateY(-5px); }
+      50% { transform: rotate(-5deg) translateY(5px); }
+      75% { transform: rotate(5deg) translateY(-5px); }
+      100% { transform: rotate(0deg) translateY(0); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .subtitle {
+      color: #dff;
+      margin-bottom: 25px;
+      min-height: 24px;
+      transition: opacity 0.4s ease;
+    }
+
+    .continue-btn {
+      background: white;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(24, 119, 242, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .continue-btn:hover {
       transform: scale(1.05);
     }
 
-    footer.foot {
-      text-align: center;
-      margin: 30px auto 10px;
+    .scroll-info {
+      margin-top: 30px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.95rem;
+      color: var(--scroll-color);
+      overflow: hidden;
+      white-space: nowrap;
     }
 
-    footer.foot a h2 {
+    .scroll-text {
+      display: inline-block;
+      animation: scrollLeft 18s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      color: white;
       font-size: 1.2rem;
-      color: #00f0ff;
-      animation: glow 2s infinite alternate;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00f0ff; }
-      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00f0ff; }
+    .spinner {
+      border: 6px solid #eee;
+      border-top: 6px solid #1877f2;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
     }
 
-    .footer {
-      background: #111;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 14px;
-      color: #ccc;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive pour tablettes et mobiles */
+    @media (max-width: 768px) {
+      .container {
+        max-width: 90%;
+        margin: 10vh auto;
+        padding: 40px 25px 35px;
+      }
+      .logo {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      .continue-btn {
+        padding: 13px 32px;
+        font-size: 1rem;
+      }
+      .scroll-info {
+        font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 480px) {
-      .card img {
+      .container {
+        padding: 30px 20px 30px;
+      }
+      .logo {
+        width: 70px;
         height: 70px;
+        margin-bottom: 15px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+      }
+      .continue-btn {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+      }
+      .scroll-info {
+        font-size: 0.85rem;
       }
     }
   </style>
 </head>
 <body>
-  <h2 class="animated-title">Bienvenue sur AmiBa Groupe</h2>
-  <div class="container">
-    <div class="card"><a href="https://emileag228.github.io/amibageo/"><img src="12.jpg" alt="Geo"></a></div>
-    <div class="card"><a href="https://www.tiktok.com/"><img src="tiktok.png" alt="Tiktok"></a></div>
-    <div class="card"><a href="https://www.capcut.com/fr-fr/"><img src="capcut.png" alt="Capcut"></a></div>
-    <div class="card"><a href="https://www.youtube.com/"><img src="youtube1.jpg" alt="YouTube"></a></div>
-    <div class="card"><a href="https://www.instagram.com/"><img src="instagram.jpg" alt="Instagram"></a></div>
-    <div class="card"><a href="https://www.facebook.com/"><img src="facebook.png" alt="Facebook"></a></div>
-    <div class="card"><a href="https://emileag228.github.io/liveFootTv//"><img src="sport1.jpg" alt="Google"></a></div>
-  
 
-    <div class="card"><a href="https://www.linkedin.com/"><img src="linkedin.jpg" alt="LinkedIn"></a></div>
-    <div class="card"><a href="https://www.pinterest.com/"><img src="pinterest.png" alt="Pinterest"></a></div>
-    <div class="card"><a href="https://x.com/"><img src="twitter.png" alt="Twitter"></a></div>
-    <div class="card"><a href="https://www.webtoons.com/fr/originals"><img src="manga.jpg" alt="Webtoon"></a></div>
-    <div class="card"><a href="https://1xlite-643419.top/fr"><img src="1xbet.png" alt="1xbet"></a></div>
-    <div class="card"><a href="https://www.reddit.com/"><img src="reddit.png" alt="Reddit"></a></div>
-    <div class="card"><a href="https://www.amazon.fr/"><img src="amazone.jpg" alt="Amazon"></a></div>
-    <div class="card"><a href="https://www.alibaba.com/"><img src="alibaba.png" alt="Alibaba"></a></div>
-    <div class="card"><a href="https://www.w3schools.com/"><img src="w3.jpg" alt="W3Schools"></a></div>
-    <div class="card"><a href="https://codepen.io/"><img src="codepen.png" alt="Codepen"></a></div>
-    <div class="card"><a href="https://jsbin.com/"><img src="jsbin.png" alt="JSBin"></a></div>
-    <div class="card"><a href="https://gemini.google.com/app?hl=fr"><img src="gemi.jpg" alt="Gemini"></a></div>
-    <div class="card"><a href="https://chatgpt.com/"><img src="chat.jpg" alt="ChatGPT"></a></div>
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="spinner" aria-label="Chargement"></div>
+    Chargement de AmiBa Chat...
   </div>
-  <br><br>
-  <footer class="foot">
-    <a href="https://hey.link/Sh1yE"><h2>Contact Service...</h2></a>
-  </footer>
-  <footer class="footer">
-    <p>© 2025 EMILE_AG . Tous droits réservés.</p>
-  </footer>
+
+  <!-- Fond bulles -->
+  <div class="bubbles" aria-hidden="true">
+    <span style="left:5%; animation-duration: 18s;"></span>
+    <span style="left:15%; animation-duration: 25s;"></span>
+    <span style="left:30%; animation-duration: 22s;"></span>
+    <span style="left:50%; animation-duration: 20s;"></span>
+    <span style="left:70%; animation-duration: 17s;"></span>
+    <span style="left:85%; animation-duration: 27s;"></span>
+    <span style="left:95%; animation-duration: 23s;"></span>
+  </div>
+
+  <!-- Cadre -->
+  <div class="container" role="main" aria-label="Page de bienvenue AmiBa Chat">
+    <div class="logo" aria-hidden="true">
+      <img src="uploads/default.jpg" alt="Logo AmiBa" />
+    </div>
+    <h1>Bienvenue sur AmiBa Chat</h1>
+    <p class="subtitle" id="subtitle">Connectez-vous et partagez vos moments préférés.</p>
+    <button class="continue-btn" id="continueBtn" aria-label="Continuer">Continuer</button>
+
+    <div class="scroll-info" aria-live="polite" aria-atomic="true">
+      <div class="scroll-text">
+        🚀 AmiBa Chat : stories 24h, duo chat privé, envoi vocal, sécurité renforcée, UI moderne, feed 72h, messagerie puissante, actus, et bien plus encore...
+      </div>
+    </div>
+  </div>
+
+  <audio id="welcomeSound" preload="auto">
+    <source src="welcome.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const subtitleEl = document.getElementById("subtitle");
+    const subtitles = [
+      "Connectez-vous et partagez vos moments préférés.",
+      "Créez des stories visibles pendant 24h.",
+      "Discutez en duo avec vos amis en toute simplicité.",
+      "Publiez textes, vocaux, vidéos, images et plus !",
+      "Bienvenue dans l’univers AmiBa 🚀"
+    ];
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % subtitles.length;
+      subtitleEl.style.opacity = 0;
+      setTimeout(() => {
+        subtitleEl.textContent = subtitles[index];
+        subtitleEl.style.opacity = 1;
+      }, 100);
+    }, 2000);
+
+    // Redirection après 2 secondes
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      document.getElementById("loader").style.display = "flex";
+      const sound = document.getElementById("welcomeSound");
+      sound.play().catch(() => {});
+
+      setTimeout(() => {
+        window.location.href = "index.php";
+      }, 2000);
+    });
+
+    window.addEventListener("load", () => {
+      document.getElementById("welcomeSound").volume = 0.3;
+    });
+  </script>
+
 </body>
 </html>
