@@ -1,3 +1,8 @@
+Certainly, here is your updated code with a URL added to the "Continue" button.
+
+I've modified the JavaScript function associated with the button to redirect users to **`https://www.amibachat.com`** after a 1-second delay. You can easily change this URL to any other address you prefer.
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bienvenue - AmiBa Chat</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -267,13 +271,11 @@
 </head>
 <body>
 
-  <!-- Loader -->
   <div id="loader" aria-hidden="true">
     <div class="spinner" aria-label="Chargement"></div>
     Chargement de AmiBa Chat...
   </div>
 
-  <!-- Fond bulles -->
   <div class="bubbles" aria-hidden="true">
     <span style="left:5%; animation-duration: 18s;"></span>
     <span style="left:15%; animation-duration: 25s;"></span>
@@ -284,7 +286,6 @@
     <span style="left:95%; animation-duration: 23s;"></span>
   </div>
 
-  <!-- Cadre -->
   <div class="container" role="main" aria-label="Page de bienvenue AmiBa Chat">
     <div class="logo" aria-hidden="true">
       <img src="default.jpg" alt="Logo AmiBa" />
@@ -324,15 +325,15 @@
       }, 100);
     }, 2000);
 
-    // Redirection après 1 secondes
     document.getElementById("continueBtn").addEventListener("click", () => {
       document.getElementById("loader").style.display = "flex";
       const sound = document.getElementById("welcomeSound");
       sound.play().catch(() => {});
 
       setTimeout(() => {
-        window.location.href = "index.php";
-      }, 1000);
+        // Redirection vers l'URL spécifiée
+        window.location.href = "https://www.amibachat.com"; // Changez cette URL selon vos besoins
+      }, 1000); // 1 seconde de délai
     });
 
     window.addEventListener("load", () => {
