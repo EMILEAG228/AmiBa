@@ -1,4 +1,10 @@
+Bien sûr \! Pour que chaque message sous le logo dure 2 secondes, il suffit de modifier la durée du `setInterval` dans votre code JavaScript.
 
+Actuellement, il est réglé à `1000` millisecondes (1 seconde). Pour 2 secondes, nous devons le changer à `2000` millisecondes.
+
+Voici le code exact avec cette modification :
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -312,14 +318,15 @@
     ];
     let index = 0;
 
+    // Changé de 1000ms (1 seconde) à 2000ms (2 secondes)
     setInterval(() => {
       index = (index + 1) % subtitles.length;
       subtitleEl.style.opacity = 0;
       setTimeout(() => {
         subtitleEl.textContent = subtitles[index];
         subtitleEl.style.opacity = 1;
-      }, 100);
-    }, 1000);
+      }, 100); // Durée de la transition fade
+    }, 2000); // Durée totale de chaque message : 2 secondes
 
     document.getElementById("continueBtn").addEventListener("click", () => {
       document.getElementById("loader").style.display = "flex";
@@ -329,7 +336,7 @@
       setTimeout(() => {
         // Redirection vers l'URL spécifiée
         window.location.href = "#"; // Changez cette URL selon vos besoins
-      }, 1000); // 1 seconde de délai
+      }, 1000); // 1 seconde de délai avant la redirection
     });
 
     window.addEventListener("load", () => {
@@ -339,3 +346,4 @@
 
 </body>
 </html>
+```
