@@ -324,7 +324,7 @@
       }, 100);
     }, 2000);
 
-    // Redirection après 2 secondes
+    // Redirection après 1 secondes
     document.getElementById("continueBtn").addEventListener("click", () => {
       document.getElementById("loader").style.display = "flex";
       const sound = document.getElementById("welcomeSound");
@@ -332,7 +332,7 @@
 
       setTimeout(() => {
         window.location.href = "index.php";
-      }, 2000);
+      }, 1000);
     });
 
     window.addEventListener("load", () => {
